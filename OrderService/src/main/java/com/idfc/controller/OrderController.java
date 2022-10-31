@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,7 +28,11 @@ public class OrderController {
 		Order res = this.service.placeOrder(title, qty, name);
 		if(res == null)
 			return new ResponseEntity<Object>("Not enough quantity", HttpStatus.NOT_FOUND);
-		System.out.println(title);
-		return new ResponseEntity<Object>( res, HttpStatus.CREATED);
+		else {
+			System.out.println(title);
+			return new ResponseEntity<Object>( res, HttpStatus.CREATED);
+		}
+//		
+		
 	}
 }

@@ -32,10 +32,17 @@ public class OrderServiceImple implements OrderService {
 		pathVariables.put("title", title);
 		pathVariables.put("qty", qty);
 		System.out.println("inside the place Order");
-		ResponseEntity<Inventory> entity = new RestTemplate().exchange(baseUrl, HttpMethod.GET, null, Inventory.class, pathVariables);
+		ResponseEntity<Inventory> entity = new RestTemplate()
+				.exchange(baseUrl, HttpMethod.GET, null, Inventory.class, pathVariables);
 		Inventory res = entity.getBody();
-		if(res == null)
+		
+		System.out.println("inside the order service :-" + res);
+		int qtys = res.getQty();
+		if(qtys == -1) {
+			System.out.println("inside the inventory res " + res);
 			return null;
+		}
+			
 		
 		Order newOrder = new Order(res.getTitle(), qty, clientName);
 		return this.addOrder(newOrder);

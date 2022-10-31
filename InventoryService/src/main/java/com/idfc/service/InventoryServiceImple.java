@@ -23,6 +23,7 @@ public class InventoryServiceImple implements InventoryService {
 				if(inventory.getQty() >= qty) {
 					return this.setInventoryQty(inventory.getId(), inventory.getQty()-qty);
 				}
+				return inventory;
 			}
 		}
 		

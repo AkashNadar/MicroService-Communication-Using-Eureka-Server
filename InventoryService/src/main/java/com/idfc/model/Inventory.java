@@ -26,6 +26,10 @@ public class Inventory {
 		this.qty = qty;
 	}
 
+	public Inventory(int i) {
+		//TODO Auto-generated constructor stub
+	}
+
 	public int getId() {
 		return id;
 	}
